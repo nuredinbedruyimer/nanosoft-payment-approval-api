@@ -1,6 +1,6 @@
 import { Pool } from "pg";
 
-console.log(process.env.HOST)
+// console.log(process.env.HOST)
 
 const pool = new Pool({
     host:process.env.HOST,
