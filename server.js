@@ -1,9 +1,21 @@
 
 import app from "./app.js";
+import pool from "./database/database.js";
 
-//  Use Enviromental value for port and use 800 as default port
-const PORT  = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, ()=>{
-    console.log(`Server is Running on port ${PORT}`)
-})
+(async () => {
+
+  try {
+
+    await pool.connect(); 
+    //  Verify the database connection
+    console.log('Database Connected Successfully!!!');
+
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+  } catch (err) {
+    console.error('Database connection failed and its error:', err);
+    process.exit(1);
+  }
+})();
