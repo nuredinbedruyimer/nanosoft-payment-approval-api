@@ -1,6 +1,7 @@
 import hashPassword from "../utils/hashPassword.js";
 import comparePassword from "../utils/comparePassword.js";
 import pool from "../database/database.js";
+import jwt from "jsonwebtoken";
 
 const registerController = async (req, res) => {
   //  Get Infos
@@ -10,7 +11,8 @@ const registerController = async (req, res) => {
 
   try {
     //  Hash Password Before Store to database
-    const hashedPassword = hashPassword(password);
+    const hashedPassword = await hashPassword(password);
+    console.log(hashedPassword)
 
     const result = await pool.query(
       "INSERT INTO users (email, password_hash, role, name) VALUES ($1,$2,$3,$4) RETURNING id,email,role,name",
@@ -45,6 +47,8 @@ const loginController = async (req, res) => {
       email,
     ]);
     const user = result.rows[0];
+
+    console.log(user)
 
     // User Does Not Exist
 
