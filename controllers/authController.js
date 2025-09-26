@@ -12,7 +12,7 @@ const registerController = async (req, res) => {
   try {
     //  Hash Password Before Store to database
     const hashedPassword = await hashPassword(password);
-    console.log(hashedPassword)
+    // console.log(hashedPassword)
 
     const result = await pool.query(
       "INSERT INTO users (email, password_hash, role, name) VALUES ($1,$2,$3,$4) RETURNING id,email,role,name",

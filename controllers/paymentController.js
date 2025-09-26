@@ -62,13 +62,13 @@ const adminAction =  async(req, res) => {
         req.user.id,
         req.user.role,
         `admin_${decision}`,
-        payment_status.PENDING,
+        payment_status.ADMIN_APPROVED,
         to_status,
         comment,
       ]
     );
 
-    res.status(200).sendj({
+    res.status(200).send({
       status: "success",
       message: "Payment COnfirmed by Admin",
       id,
