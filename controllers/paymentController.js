@@ -1,5 +1,5 @@
 import { payment_status } from "../constant/payment.js";
-import pool from "../db.js";
+import pool from "../database/database.js";
 
 const createPayment = async (req, res) => {
   //  Get The Amount we gonna pay

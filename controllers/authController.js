@@ -1,5 +1,6 @@
 import hashPassword from "../utils/hashPassword.js";
 import comparePassword from "../utils/comparePassword.js";
+import pool from "../database/database.js";
 
 const registerController = async (req, res) => {
   //  Get Infos
