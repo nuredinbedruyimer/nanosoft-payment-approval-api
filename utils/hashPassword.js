@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt"
 
 const hashPassword = async(password)=> {
-  return  await bcrypt.hash(password, process.env.SALT);
+  return  await bcrypt.hash(password, parseInt(process.env.SALT, 10));
 }
 
 

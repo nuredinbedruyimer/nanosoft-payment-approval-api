@@ -14,7 +14,7 @@ const registerController = async (req, res) => {
 
     const result = await pool.query(
       "INSERT INTO users (email, password_hash, role, name) VALUES ($1,$2,$3,$4) RETURNING id,email,role,name",
-      [email, hashed, role || "user", name]
+      [email, hashedPassword, role || "user", name]
     );
 
     res.status(201).send({
